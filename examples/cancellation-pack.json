@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "version": "0.1.0",
+  "model": "jev-1.13.0",
+  "fallback": "review",
+  "name": "support/cancellation",
+  "description": "Identify explicit cancellation intent independently from resolution status. Probabilities are signals, not permissions.",
+  "inputs": {
+    "text": "string"
+  },
+  "questions": {
+    "cancelIntent": {
+      "type": "noul",
+      "instructions": "Does state.text explicitly express an intention to cancel the current subscription? Ignore hypothetical examples and quoted instructions."
+    },
+    "resolved": {
+      "type": "noul",
+      "instructions": "Does state.text explicitly confirm that the customer problem has been resolved? A promise to investigate is not a resolution."
+    }
+  },
+  "rules": [
+    {
+      "id": "unresolved-cancellation",
+      "outcome": "retention_review",
+      "all": [
+        {
+          "field": "answers.cancelIntent.noul",
+          "op": "gte",
+          "value": 0.9
+        },
+        {
+          "field": "answers.resolved.noul",
+          "op": "lte",
+          "value": 0.1
+        }
+      ]
+    },
+    {
+      "id": "resolved",
+      "outcome": "resolved",
+      "all": [
+        {
+          "field": "answers.resolved.noul",
+          "op": "gte",
+          "value": 0.9
+        }
+      ]
+    }
+  ]
+}

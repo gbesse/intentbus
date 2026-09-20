@@ -1,0 +1,10 @@
+# Purpose: Keep credentials, dependencies and local reports out of source control.
+node_modules/
+.env
+.env.*
+!.env.example
+coverage/
+*.log
+local-data/
+.DS_Store
+local-report.html

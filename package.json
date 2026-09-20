@@ -1,0 +1,43 @@
+{
+  "name": "@gbesse/intentbus",
+  "version": "0.1.0",
+  "description": "Turn semantic judgments into versioned business events with durable replay and an outbox.",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./src/index.d.mts",
+      "import": "./src/index.mjs"
+    }
+  },
+  "bin": {
+    "intentbus": "./bin/intentbus.mjs"
+  },
+  "files": [
+    "src",
+    "bin",
+    "packs",
+    "examples",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "check": "node scripts/check.mjs",
+    "demo": "node examples/demo.mjs",
+    "typecheck": "tsc --noEmit --strict --target ES2022 --module NodeNext docs/public-api-types.mts"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gbesse/intentbus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/gbesse/intentbus/issues"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  }
+}
