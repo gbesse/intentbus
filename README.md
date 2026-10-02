@@ -38,7 +38,7 @@ customer.retention.exited     inactive
 ## Library
 
 ```sh
-npm install github:gbesse/intentbus#v0.1.0
+npm install github:gbesse/intentbus#v0.1.1
 ```
 
 ```js
@@ -101,6 +101,10 @@ Without a webhook URL, flush prints to stdout and acknowledges those events. Set
 `INTENTBUS_WEBHOOK_URL` and optional `INTENTBUS_WEBHOOK_TOKEN` for delivery over HTTP.
 This explicitly sends event facts and entity ids to that endpoint. Original source text
 is not stored in the snapshot or delivered in the event.
+
+## Shareable demo report
+
+Run `npm run demo:report` to capture this repository’s bundled example as one JSON object with the project purpose, version and complete demo output. The command fails if the demo fails, so the report is useful when sharing a reproducible first look or reporting unexpected behavior. The bundled demo’s data and safety boundaries still apply.
 
 ## Guarantees and limits
 
